@@ -1,0 +1,29 @@
+{
+    "appname": "Parameter Cleanup Test",
+    "version": "0.2.0.0",
+    "manufacturer": "masterspace",
+    "upgradecode": "2aef5158-119f-4b2e-bbc5-42afaa757355",
+    "productid": "d614d362-cc0a-4c13-9977-4a71503b15d1",
+    "outputfile":"",
+    "banner":"",
+    "panel":"",
+    "icon":"",
+    "license":"",
+    "quietmode":false,
+    "complete":true,
+    "features": [
+        
+        {
+            "title": "Parameter cleanup",
+            "description": "This is a Dynamo package for converting shared family parameters to local family parameters.",
+            "copyinfo": [
+                {
+                    "source": "Install",
+                    "destination": "%appdata%\\Dynamo\\Dynamo Revit\\2.0\\packages",
+                    "includesubfolders": true
+                }
+            ]
+        }
+
+    ]
+}
