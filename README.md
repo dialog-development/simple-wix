@@ -2,21 +2,29 @@
 
 # Simple Wix
 
-Come home to the impossible flavour of your own completion. Come home to Simple WiX. 
+<p align="center">
+  <i>Come home to the impossible flavour of your own completion. Come home to Simple WiX. </i>
+</p>
 
-Simple WiX is a command line utility to automatically create .msi installers using the WiX toolset. 
+
+Simple WiX is a command line utility to automatically create .msi installers using the open source WiX toolset. If you want to generate a Windows installer (.msi) file that just needs to copy files onto the user's machine, update them with new versions, and delete a settings folder or two on uninstall, then Simple Wix is the right tool for you. 
+
+<p align="center">
+<img src=media/installer.png alt="Simple Wix"/>
+</p>
+
+This project was born out of the frustrations endured when trying to create a simple installer for some plugins that I was developing. When using frameworks such as InnoSetup I found that I would often run into inexplicable permissions issues that were relatively opaque and difficult to debug. I found that the [WiX Toolset](https://wixtoolset.org/) worked reliably, was transparent and easy to debug, and had a lot of documentation and developer support, but the process of writing WiX's .wxs file's is rather ... onerous, so this tool is designed to make do it for you. 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+To learn how to use this tool for your project, see the [Getting Started](docs/gettingstarted.md) page in the Wiki.
+
+To get this up and running for development purposes, just clone the repository and build the solution. To test the full process you'll also want to download and install the latest [WiX Toolset](https://wixtoolset.org/releases/) (3.11 at time of writing). See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+* [WiX Toolset](https://wixtoolset.org/releases/)
 
-```
-Give examples
-```
 
 ### Installing
 
@@ -62,23 +70,24 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [commandlineparser](https://github.com/commandlineparser/commandline) - for making sense of all those options.
+* [Newtonsoft JSON.NET](https://www.newtonsoft.com/json) - Json stuff
+* [Costura Fody](https://github.com/Fody/Costura) - Weaving a single exe
+* [Paint.NET](https://www.getpaint.net/) - Everything media related
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/dialog-development/simple-wix/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Jason Masters** - *Initial work* - [m-sterspace](https://github.com/m-sterspace)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/dialog-development/simple-wix/contributors) who participated in this project.
 
 ## License
 
