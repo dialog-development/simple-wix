@@ -19,7 +19,7 @@ This project was born out of the frustrations endured when trying to create a si
 
 To learn how to use this tool for your project, see the [Getting Started](docs/gettingstarted.md) page in the Wiki.
 
-To get this up and running for development purposes, just clone the repository and build the solution. To test the full process you'll also want to download and install the latest [WiX Toolset](https://wixtoolset.org/releases/) (3.11 at time of writing). See deployment for notes on how to deploy the project on a live system.
+To get this repo up and running for development / contribution purposes, just clone the repository and build the solution. To test the full process you'll also want to download and install the latest [WiX Toolset](https://wixtoolset.org/releases/) (3.11 at time of writing). See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
