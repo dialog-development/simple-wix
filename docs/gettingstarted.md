@@ -13,9 +13,8 @@ To install this on a user's machine, I just just need either the individual file
 <p align="center">
 <img src="../media/gettingstarted/revit_addin_folder.png" alt="Simple Wix" height="300"/>
 </p>
-![alt text](../media/gettingstarted/revit_addin_folder.png "Installation Directory")
 
-But when you go to acually distribute these files, a number of questions start coming up, like 'how do I get these files into the right spot on the user's machine', 'how do I update those files when new versions are released', 'what happens if it's interrupted',and 'how does the user remove it cleanly and easily'? 
+But when you go to acually distribute these files, a number of questions start coming up, like 'how do I make sure the user puts them in the right spot?', 'how do I update those files when new versions are released?', 'what happens if it's interrupted?',and 'how does the user remove it cleanly and easily?' 
 
 Thankfully we're not the first people who needed to solve these problems, and the most reliable solution on a Windows machine is to integrate with the Windows Installer Framework by creating .msi files.
 
@@ -84,7 +83,7 @@ height=150/>
 <img src=../media/gettingstarted/installer_programlist.png alt="Simple Wix" height=400/>
 </p>
 
-If you'd like some more detail on this process and the various options available to customize your installation (like how to change the default images) you can find it [here](moredetail.md).
+And that's it for a super simple installer. But read on to find out the various options available to customize your installation (like how to change the default license, and images).
 
-<i> Final Note:</i> Hang onto your manifest file, and specifically the GUIDs created by both the UpgradeCode and the ProductCode. These two GUIDs are what uniquely identify your product to Windows so that it knows when to upgrade vs create a new installation. If these change Windows will see your two versions as completely unrelated applications. 
+<i> One Last Note:</i> Hang onto your manifest file, and specifically the GUIDs created by both the UpgradeCode and the ProductCode. These two GUIDs are what uniquely identify your product to Windows so that it knows when to upgrade vs create a new installation. If these change Windows will see your two versions as completely unrelated applications. 
 

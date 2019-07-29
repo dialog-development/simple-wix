@@ -20,7 +20,7 @@ Simple WiX is an open source command line utility to automatically create .msi i
 <img src=media/installer.png alt="Simple Wix"/>
 </p>
 
-This project was born out of the frustrations endured when trying to create a simple installer for some plugins that I was developing. When using frameworks such as InnoSetup I found that I would often run into inexplicable permissions issues that were relatively opaque and difficult to debug. I found that the [WiX Toolset](https://wixtoolset.org/) worked reliably, was transparent and easy to debug, and had a lot of documentation and developer support, but the process of writing WiX files is rather ... onerous, to say the least, so this tool is designed to do it all for you, while integrating cleanly into a CI/CD workflow. 
+This project was born out of the frustrations endured when trying to create a simple installer for some plugins that I was developing. When using frameworks such as InnoSetup I found that I would often run into inexplicable issues that were relatively opaque and difficult to debug. I found that the [WiX Toolset](https://wixtoolset.org/) worked reliably, was transparent and easy to debug, and had a lot of documentation and developer support, but the process of writing WiX files is rather ... onerous, to say the least, so this tool is designed to do it all for you, while integrating cleanly into a CI/CD workflow. 
 
 ## Getting Started
 
