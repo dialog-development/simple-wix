@@ -18,6 +18,7 @@ namespace SimpleWix.App.WiXAbstraction
         {
 
             WixProduct prod = new WixProduct(productid, appname, version, upgradecode);
+            prod.Manufacturer = manufacturer ?? "";
             prod.AddObj(new WixPackage());
             prod.AddObj(new WixUpgrade(upgradecode, version));
             prod.AddObj(new WixMedia());
@@ -149,8 +150,8 @@ namespace SimpleWix.App.WiXAbstraction
                 else
                 {
                     var nextFolder = folder.Folders.First();
-                  //  WixDirectory wfolder = new WixDirectory(nextFolder.Name, currWixFolder.GetPath(), appRegistryFolder);
-                   // currWixFolder.AddDirectory(wfolder);
+                    //  WixDirectory wfolder = new WixDirectory(nextFolder.Name, currWixFolder.GetPath(), appRegistryFolder);
+                    // currWixFolder.AddDirectory(wfolder);
                     //lookupDict.Add(nextFolder, wfolder);
                     PopulateWixDir_Rec(lookupDict, folder, currWixFolder, appRegistryFolder);//we're skipping ahead in our recursive search but returning a flag.
                     windowsVolumeFlag = nextFolder;

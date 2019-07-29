@@ -2,12 +2,19 @@
 
 # Simple Wix
 
+
+<p align="center">
+  <i>~~~~</i>
+</p>
 <p align="center">
   <i>Come home to the impossible flavour of your own completion. Come home to Simple WiX. </i>
 </p>
 
+<p align="center">
+  <i>~~~~</i>
+</p>
 
-Simple WiX is a command line utility to automatically create .msi installers using the open source WiX toolset. If you want to generate a Windows installer (.msi) file that just needs to copy files onto the user's machine, update them with new versions, and delete a settings folder or two on uninstall, then Simple Wix is the right tool for you. 
+Simple WiX is an open source command line utility to automatically create .msi installers using the open source WiX toolset. If you want to generate a Windows installer (.msi) file that just needs to copy files onto the user's machine, update them with new versions, and delete a settings folder or two on uninstall, then Simple Wix is the right tool for you. 
 
 <p align="center">
 <img src=media/installer.png alt="Simple Wix"/>
@@ -17,7 +24,7 @@ This project was born out of the frustrations endured when trying to create a si
 
 ## Getting Started
 
-To learn how to use this tool for your project, see the [Getting Started](docs/gettingstarted.md) page in the Wiki.
+To learn how to use this tool to create an installer for your project, see the [Getting Started](docs/gettingstarted.md) page in the Wiki.
 
 To get this repo up and running for development / contribution purposes, just clone the repository and build the solution. To test the full process you'll also want to download and install the latest [WiX Toolset](https://wixtoolset.org/releases/) (3.11 at time of writing). See deployment for notes on how to deploy the project on a live system.
 

@@ -55,7 +55,16 @@ namespace SimpleWix.App.WiXAbstraction
             {
                 object value = property.GetValue(obj, null);
                 if (value != null)
+                {
+                    bool skip = false;
+                    if (value is string strVal)
+                    {
+                        if (strVal.IsNullOrWhitespace()) skip = true;
+                    }
+                    //if(!skip)
                     sb.Append(property.Name + "=\"" + value + "\" ");
+
+                }
             }
             sb.Append(">");
             return sb.ToString();
@@ -311,7 +320,7 @@ namespace SimpleWix.App.WiXAbstraction
             this.Name = name;
             this.Language = "1033";
             this.Version = ver;
-            this.Manufacturer = "DIALOG";
+           // this.Manufacturer = "";
             this.UpgradeCode = upgradeCode;
         }
         public void AddObj(WixObject obj)

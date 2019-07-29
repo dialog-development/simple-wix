@@ -32,7 +32,10 @@ namespace SimpleWix
             return String.IsNullOrEmpty(s);
         }
 
-
+        public static bool IsNullOrWhitespace(this string s)
+        {
+            return String.IsNullOrWhiteSpace(s);
+        }
         public static string JsonPrettify(this string json)
         {
             using (var stringReader = new StringReader(json))

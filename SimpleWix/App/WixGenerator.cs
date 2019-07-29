@@ -6,6 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Net.NetworkInformation;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
@@ -53,6 +54,14 @@ namespace SimpleWix.App
         {
             try
             {
+                if (args.Length > 0)
+                {
+                    if (args[0].ToLower() == "init")
+                    {
+                        RunInit();
+                        return;
+                    }
+                }
                 Manifest inputs = InputResult.GetManifest(args);
                 QuietMode = inputs?.quietmode ?? false;
 
@@ -62,10 +71,14 @@ namespace SimpleWix.App
 
 
                 printTitle(inputs);
-
+                if (!QuietMode)
+                {
+                    Console.WriteLine("Press any key to continue: ...");
+                    Console.ReadKey();
+                }
 
                 var fs = InputConverter.ConvertManifestToFileSystem(inputs.features);
-                Console.WriteLine(fs.Print());
+                //Console.WriteLine(fs.Print());
                 var wix = WixConverter.ConvertFileSystem(fs, inputs.productid, inputs.upgradecode, inputs.appname, inputs.version, inputs.icon,
                     inputs.manufacturer, inputs.panel, inputs.banner, inputs.license);
 
@@ -133,6 +146,127 @@ namespace SimpleWix.App
             }
 
             Console.WriteLine("Now exiting, goodbye.");
+        }
+
+        private static void RunInit()
+        {
+            var manifest = new Manifest();
+
+            Console.WriteLine();
+            Console.WriteLine("SimpleWix Init | Let's generate a manifest file!");
+            Console.Write("Project Name: ");
+            var name = Console.ReadLine();
+            if(name.IsNullOrWhitespace()) throw new Exception("Must provide a project name.");
+            manifest.appname = name;
+
+            Console.Write("Version: [0.0.1.0] ");
+            var version = Console.ReadLine();
+            if (version.IsNullOrWhitespace())
+            { 
+                version = "0.0.1.0";
+                Console.Write(version);
+                Console.WriteLine();
+            }
+
+            manifest.version = version;
+
+            Console.Write("Manufacturer: [] ");
+            var manufacturer = Console.ReadLine();
+            if (manufacturer.IsNullOrWhitespace())
+            {
+                manufacturer = "";
+                Console.Write(manufacturer);
+                Console.WriteLine();
+            }
+
+            manifest.manufacturer = version;
+
+            var outputfilepath = Path.Combine(WixGenerator.CurrentFolder, "manifest.json");
+            Console.Write("Manifest Filepath: ["+outputfilepath+"] ");
+            var userPath = Console.ReadLine();
+            if (!userPath.IsNullOrWhitespace())
+            {
+                outputfilepath = userPath;
+                Console.Write(outputfilepath);
+                Console.WriteLine();
+            }
+
+            manifest.productid = Guid.NewGuid().ToString();
+            manifest.upgradecode = Guid.NewGuid().ToString();
+            manifest.complete = true;
+            manifest.quietmode = false;
+
+
+            Console.Write("Would you like to setup your source files now: [(y)/n] ");
+            var features = new List<Feature>();
+            var res = Console.ReadLine();
+            if (res.IsNullOrWhitespace()) res = "y";
+            if (res?.ToLower().Contains("y") ?? false)
+            {
+                for(int i = 0; i<1000; i++)
+                {
+                    var feat = new Feature();
+                    Console.Write("Feature Name: [default] ");
+                    res = Console.ReadLine();
+                    if (res.IsNullOrWhitespace()) res = "default";
+                    feat.title = res;
+
+                    Console.Write("Feature Description: [Default installation package.] ");
+                    res = Console.ReadLine();
+                    if (res.IsNullOrWhitespace()) res = "Default installation package.";
+                    feat.description = res;
+                    for (int j = 0; j < 1000; j++)
+                    {
+                        var copyinfo = new CopyInfo();
+                        Console.Write("Source Path: [] ");
+                        res = @"" + Console.ReadLine();
+                        if (res.IsNullOrWhitespace()) { Console.Write("Must provide source"); continue; }
+                        copyinfo.source = res;
+
+                        Console.Write("Include sub folders?: [y/(n)] ");
+                        res = Console.ReadLine();
+                        if (res.IsNullOrWhitespace()) res = "n";
+                        copyinfo.includesubfolders = res?.ToLower().Contains("y") ?? false;
+
+                        Console.Write("Destination Path: [] ");
+                        res = @""+ Console.ReadLine();
+                        if (res.IsNullOrWhitespace()) { Console.Write("Must provide destination"); continue;}
+                        copyinfo.destination = res;
+
+                        feat.copyinfo.Add(copyinfo);
+
+                        Console.Write("Would you like to add another source to the "+ feat.title+" feature?: [y/(n)] ");
+                        res = Console.ReadLine();
+                        if (res.IsNullOrWhitespace()) res = "n";
+                        if (!res?.ToLower().Contains("y") ?? false) break;
+                    }
+                    manifest.features.Add(feat);
+                    Console.Write("Would you like to add another feature to the " + manifest.appname + " project?: [y/n] ");
+                    res = Console.ReadLine();
+                    if (res.IsNullOrWhitespace()) res = "n";
+                    if (!res?.ToLower().Contains("y") ?? false) break;
+                }
+
+
+            }
+            
+            if (File.Exists(outputfilepath))
+            {
+                Console.Write("The manifest file already exists, would you like to overwrite? [y/n]");
+                bool overWrite = Console.ReadLine()?.ToLower().Contains("y") ?? false;
+                if (!overWrite)
+                {
+                    Console.WriteLine("Cancelled.");
+                    return;
+                }
+                File.Delete(outputfilepath);
+            }
+
+            //var settings = new JsonSerializerSettings();
+            var str = JsonConvert.SerializeObject(manifest, Formatting.Indented);
+           // File.Create(outputfilepath);
+            File.WriteAllText(outputfilepath,str);
+            Console.WriteLine("Success! Manifest file saved to: " + outputfilepath);
         }
 
         private static void PrintDir(string dir)
@@ -245,9 +379,9 @@ namespace SimpleWix.App
             title.Add(""); ;
             title.Add(""); ;
 
-            title.Add("About To Generate Wix XML WixFile:  " + inputs.appname);
-            title.Add("Manifest:     " + inputs.filepath);
-            title.Add(inputs.Print());
+            title.Add("About To Generate Wix XML WixFile:  " + inputs.appname + "from manifest located at: " + inputs.filepath);
+            
+            //title.Add(inputs.Print());
             title.Add("");
             title.Add("");
             printListWithDelay(title, 20);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace SimpleWix.App.Input
 {
@@ -23,7 +24,7 @@ namespace SimpleWix.App.Input
         public bool? complete { get; set; }
         public List<Feature> features { get; set; } = new List<Feature>();
         public List<UninstallInfo> uninstall { get; set; } = new List<UninstallInfo>();
-        public string filepath { get; set; }
+        [JsonIgnore] public string filepath { get; set; }
 
 
         public string Print()
@@ -60,9 +61,9 @@ namespace SimpleWix.App.Input
 
     public class Feature
     {
-        public string title { get; set; }
-        public string description { get; set; }
-        public List<CopyInfo> copyinfo { get; set; }
+        public string title { get; set; } = "";
+        public string description { get; set; } = "";
+        public List<CopyInfo> copyinfo { get; set; } = new List<CopyInfo>();
 
         public string Print(string ind)
         {
@@ -84,7 +85,7 @@ namespace SimpleWix.App.Input
     {
         public string source { get; set; }
         public string destination { get; set; }
-        public bool includesubfolders { get; set; }
+        public bool includesubfolders { get; set; } = false;
 
         public string Print(string ind)
         {
