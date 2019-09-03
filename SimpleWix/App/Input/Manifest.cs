@@ -31,28 +31,28 @@ namespace SimpleWix.App.Input
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Manifest");
-            sb.AppendLine(WixGenerator.Ind + "appname: " + appname ?? "none");
-            sb.AppendLine(WixGenerator.Ind + "version: " + version ?? "none");
-            sb.AppendLine(WixGenerator.Ind + "manufacturer: " + manufacturer ?? "none");
-            sb.AppendLine(WixGenerator.Ind + "upgradecode: " + upgradecode ?? "none");
-            sb.AppendLine(WixGenerator.Ind + "productid: " + productid ?? "none");
-            sb.AppendLine(WixGenerator.Ind + "outputfile: " + outputfile ?? "none");
-            sb.AppendLine(WixGenerator.Ind + "banner: " + banner ?? "none");
-            sb.AppendLine(WixGenerator.Ind + "panel: " + panel ?? "none");
-            sb.AppendLine(WixGenerator.Ind + "icon: " + icon ?? "none");
-            sb.AppendLine(WixGenerator.Ind + "license: " + license ?? "none");
-            sb.AppendLine(WixGenerator.Ind + "quietmode: " + quietmode ?? "none");
-            sb.AppendLine(WixGenerator.Ind + "complete: " + complete ?? "none");
+            sb.AppendLine(SimpleWix.Ind + "appname: " + appname ?? "none");
+            sb.AppendLine(SimpleWix.Ind + "version: " + version ?? "none");
+            sb.AppendLine(SimpleWix.Ind + "manufacturer: " + manufacturer ?? "none");
+            sb.AppendLine(SimpleWix.Ind + "upgradecode: " + upgradecode ?? "none");
+            sb.AppendLine(SimpleWix.Ind + "productid: " + productid ?? "none");
+            sb.AppendLine(SimpleWix.Ind + "outputfile: " + outputfile ?? "none");
+            sb.AppendLine(SimpleWix.Ind + "banner: " + banner ?? "none");
+            sb.AppendLine(SimpleWix.Ind + "panel: " + panel ?? "none");
+            sb.AppendLine(SimpleWix.Ind + "icon: " + icon ?? "none");
+            sb.AppendLine(SimpleWix.Ind + "license: " + license ?? "none");
+            sb.AppendLine(SimpleWix.Ind + "quietmode: " + quietmode ?? "none");
+            sb.AppendLine(SimpleWix.Ind + "complete: " + complete ?? "none");
 
-            sb.AppendLine(WixGenerator.Ind + "features:");
+            sb.AppendLine(SimpleWix.Ind + "features:");
             foreach (var feat in features)
             {
-                sb.AppendLine(feat?.Print(WixGenerator.Ind + WixGenerator.Ind) ?? "No features!");
+                sb.AppendLine(feat?.Print(SimpleWix.Ind + SimpleWix.Ind) ?? "No features!");
             }
-            sb.AppendLine(WixGenerator.Ind + "uninstall:");
+            sb.AppendLine(SimpleWix.Ind + "uninstall:");
             foreach (var ui in uninstall)
             {
-                sb.AppendLine( ui?.Print(WixGenerator.Ind + WixGenerator.Ind) ?? "No uninstall components!");
+                sb.AppendLine( ui?.Print(SimpleWix.Ind + SimpleWix.Ind) ?? "No uninstall components!");
             }
 
             return sb.ToString();
@@ -74,7 +74,7 @@ namespace SimpleWix.App.Input
             sb.AppendLine(ind + "copyinfo:");
             foreach (var ci in copyinfo)
             {
-                sb.AppendLine(ci.Print(ind + WixGenerator.Ind ));
+                sb.AppendLine(ci.Print(ind + SimpleWix.Ind ));
             }
 
             return sb.ToString();
@@ -107,8 +107,8 @@ namespace SimpleWix.App.Input
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(ind + "UninstallInfo:");
-            sb.AppendLine(ind + WixGenerator.Ind + "path:" + path);
-            sb.AppendLine(ind + WixGenerator.Ind + "includesubfolders:" + includesubfolders);
+            sb.AppendLine(ind + SimpleWix.Ind + "path:" + path);
+            sb.AppendLine(ind + SimpleWix.Ind + "includesubfolders:" + includesubfolders);
 
             return sb.ToString();
         }

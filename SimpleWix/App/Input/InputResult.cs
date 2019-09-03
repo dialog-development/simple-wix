@@ -44,7 +44,7 @@ namespace SimpleWix.App.Input
             if (man.version.IsNullOrEmpty()) throw new Exception("Version must be set either through the manifest of command options");
             if (man.productid.IsNullOrEmpty()) throw new Exception("Productid must be set either through the manifest of command options");
             if (man.upgradecode.IsNullOrEmpty()) throw new Exception("Upgradecode must be set either through the manifest of command options");
-            if (man.outputfile.IsNullOrEmpty()) man.outputfile = Path.Combine(WixGenerator.CurrentFolder, man.appname + " - " + man.version + ".wxs");
+            if (man.outputfile.IsNullOrEmpty()) man.outputfile = Path.Combine(SimpleWix.CurrentFolder, man.appname + " - " + man.version + ".wxs");
             if (man.features == null || man.features.None()) throw new Exception("Error, no features set in manifest!");
             if (man.complete == null) man.complete = false;
         }
@@ -52,7 +52,7 @@ namespace SimpleWix.App.Input
         private static Manifest GetManifest(Options options)
         {
             string manifestPath = null;
-            if (options.Manifest.IsNullOrEmpty()) manifestPath = Path.Combine(WixGenerator.CurrentFolder, "manifest.json");
+            if (options.Manifest.IsNullOrEmpty()) manifestPath = Path.Combine(SimpleWix.CurrentFolder, "manifest.json");
             else manifestPath = options.Manifest;
             if (!File.Exists(manifestPath)) throw new Exception("Manifest path does not exist: " + manifestPath);
             var str = File.ReadAllText(manifestPath);

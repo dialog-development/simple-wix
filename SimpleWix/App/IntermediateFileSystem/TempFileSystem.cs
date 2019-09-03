@@ -49,7 +49,7 @@ namespace SimpleWix.App.IntermediateFileSystem
                     //if the first part of the file path isn't a drive letter and isn't in our special folder list, assume they mean relative to the current path.
                     if (!srcParts.First().IsDriveLetter() && !VariableConverter.VarToWixId.ContainsKey(srcParts.First()))
                     {
-                        var currFolder = WixGenerator.CurrentFolder;
+                        var currFolder = SimpleWix.CurrentFolder;
                         try
                         {
                             if (srcParts.First() == "..")
@@ -166,7 +166,7 @@ namespace SimpleWix.App.IntermediateFileSystem
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("TempFileSystem");
-            sb.AppendLine(this.Root.Print(WixGenerator.Ind));
+            sb.AppendLine(this.Root.Print(SimpleWix.Ind));
             return sb.ToString();
         }
 
@@ -383,11 +383,11 @@ namespace SimpleWix.App.IntermediateFileSystem
             sb.AppendLine(indent + "FD:" + this.Name);
             foreach (var fi in this.FileDirectory)
             {
-                sb.AppendLine(fi.Value.Print(indent + WixGenerator.Ind));
+                sb.AppendLine(fi.Value.Print(indent + SimpleWix.Ind));
             }
             foreach (var fi in this.FolderDirectory)
             {
-                sb.AppendLine(fi.Value.Print(indent + WixGenerator.Ind));
+                sb.AppendLine(fi.Value.Print(indent + SimpleWix.Ind));
             }
 
 

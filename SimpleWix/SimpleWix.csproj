@@ -74,7 +74,7 @@
     <Compile Include="App\WiXAbstraction\WixObject.cs" />
     <Compile Include="App\Common\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="App\WixGenerator.cs" />
+    <Compile Include="App\SimpleWix.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

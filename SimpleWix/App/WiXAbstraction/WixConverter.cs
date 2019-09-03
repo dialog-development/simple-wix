@@ -25,7 +25,10 @@ namespace SimpleWix.App.WiXAbstraction
 
             string iconFileName = icon;
             if (iconFileName.IsNullOrEmpty()) iconFileName = SaveIconToDisk();
+
             var iconName = Path.GetFileName(iconFileName);
+
+
             prod.AddObj(new WixIcon(iconName, iconFileName));
             prod.AddObj(new WixProperty("ARPPRODUCTICON", iconName));
 
@@ -87,6 +90,7 @@ namespace SimpleWix.App.WiXAbstraction
                 using (FileStream fs = new FileStream(dialogPath, FileMode.Create))
                     Properties.Resources.WixUIDialog.Save(fs, System.Drawing.Imaging.ImageFormat.Bmp);
             }
+            else dialogPath = Path.GetFullPath(dialogPath);
             outputs.Add(new WixVariable("WixUIDialogBmp", dialogPath));
 
             if (bannerPath.IsNullOrEmpty())
@@ -95,6 +99,8 @@ namespace SimpleWix.App.WiXAbstraction
                 using (FileStream fs = new FileStream(bannerPath, FileMode.Create))
                     Properties.Resources.WixUIBanner.Save(fs, System.Drawing.Imaging.ImageFormat.Bmp);
             }
+            else bannerPath = Path.GetFullPath(bannerPath);
+
             outputs.Add(new WixVariable("WixUIBannerBmp", bannerPath));
 
 
@@ -105,6 +111,7 @@ namespace SimpleWix.App.WiXAbstraction
                 licensePath = Path.Combine(tempPath, "WixUILicense.rtf");
                 File.WriteAllText(licensePath, Properties.Resources.License_Agreement___Template);
             }
+            else licensePath = Path.GetFullPath(licensePath);
 
             outputs.Add(new WixVariable("WixUILicenseRtf", licensePath));
 
@@ -270,7 +277,7 @@ namespace SimpleWix.App.WiXAbstraction
             tempPath = Path.Combine(tempPath, @"SimpleWix");
             System.IO.Directory.CreateDirectory(tempPath);
 
-            string filename = Path.Combine(tempPath, "dialogLogo.ico");
+            string filename = Path.Combine(tempPath, "simplewix.ico");
 
             using (FileStream fs = new FileStream(filename, FileMode.Create))
                 Properties.Resources.WixUIIcon.Save(fs);

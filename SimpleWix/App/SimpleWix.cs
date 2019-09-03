@@ -18,7 +18,7 @@ using SimpleWix.App.WiXAbstraction;
 
 namespace SimpleWix.App
 {
-    class WixGenerator
+    class SimpleWix
     {
 
         public static Assembly ExecutingAssembly { get; } = Assembly.GetExecutingAssembly();
@@ -36,7 +36,7 @@ namespace SimpleWix.App
         /// Generates a wxs file for use by wix. 
         /// </summary>
         /// <param name="args"> 
-        ///  CMD.EXE: WixGenerator.exe [SourceFolder] [AddInName] [AddInVersion] [RevitVersions] [UpgradeCode]
+        ///  CMD.EXE: SimpleWix.exe [SourceFolder] [AddInName] [AddInVersion] [RevitVersions] [UpgradeCode]
         /// 
         /// SourceFolder:   The folder to build from. This will be the equivalent of the Autodesk\Revit\Addins\YYYY\ folder. e.g. "C:\repos\Interior Partition Tools\bin"
         /// 
@@ -181,7 +181,7 @@ namespace SimpleWix.App
 
             manifest.manufacturer = version;
 
-            var outputfilepath = Path.Combine(WixGenerator.CurrentFolder, "manifest.json");
+            var outputfilepath = Path.Combine(SimpleWix.CurrentFolder, "manifest.json");
             Console.Write("Manifest Filepath: ["+outputfilepath+"] ");
             var userPath = Console.ReadLine();
             if (!userPath.IsNullOrWhitespace())
