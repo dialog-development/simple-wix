@@ -72,9 +72,6 @@ namespace SimpleWix.App.Input
 
             if (!opt.OutputFile.IsNullOrEmpty())
                 man.outputfile = opt.OutputFile;
-
-            if (opt.Complete != null)
-                man.complete = opt.Complete ?? false;
         }
         static string[] parseVersions(string input)
         {

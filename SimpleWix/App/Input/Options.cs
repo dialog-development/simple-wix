@@ -5,9 +5,6 @@ namespace SimpleWix.App.Input
 {
     internal class Options
     {
-        [Option('c', "complete", HelpText ="If this flag is set, the tool will also attempt to find and launch light.exe and candle.exe to compile the full msi. ")]
-        public bool? Complete { get; set; }
-
         [Option('m', "manifest", Required = false, HelpText = "The source manifest file, if left blank it will check next to itself for manifest.json")]
         public string Manifest { get; set; }
 
@@ -20,9 +17,6 @@ namespace SimpleWix.App.Input
         [Option('f', "outputFile", HelpText = "The full file path & name of the output file (defaults to Title - Version.wxs at the location of the command prompt executing it. This is optional if set in the manifest, if set in both this will take precedent.")]
         public string OutputFile { get; set; }
 
-        [Option('q', "quiet", HelpText =
-            "Operates the tool with no user prompts.  This is optional if set in the manifest, if set in both this will take precedent. ")]
-        public bool QuietOperation { get; set; } = false;
 
         //[HelpOption]
         public string GetUsage()
