@@ -14,10 +14,10 @@ namespace SimpleWix.App.WiXAbstraction
     public static class WixConverter
     {
 
-        public static Wix ConvertFileSystem(TempFileSystem fs, string productid, string upgradecode, string appname, string version, string icon, string manufacturer, string dialogPath, string bannerPath, string licensePath)
+        public static Wix ConvertFileSystem(TempFileSystem fs, string upgradecode, string appname, string version, string icon, string manufacturer, string dialogPath, string bannerPath, string licensePath)
         {
 
-            WixProduct prod = new WixProduct(productid, appname, version, upgradecode);
+            WixProduct prod = new WixProduct(appname, version, upgradecode);
             prod.Manufacturer = manufacturer ?? "";
             prod.AddObj(new WixPackage());
             prod.AddObj(new WixUpgrade(upgradecode, version));

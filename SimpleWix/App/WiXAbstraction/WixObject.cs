@@ -314,7 +314,7 @@ namespace SimpleWix.App.WiXAbstraction
         public string Manufacturer { get; set; }
         public string UpgradeCode { get; set; }
 
-        public WixProduct(string id, string name, string ver, string upgradeCode) : base("Product")
+        public WixProduct(string name, string ver, string upgradeCode) : base("Product")
         {
             this.SetId("*");//id);
             this.Name = name;

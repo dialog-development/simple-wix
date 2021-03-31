@@ -14,7 +14,6 @@ namespace SimpleWix.App.Input
         public string version { get; set; }
         public string manufacturer { get; set; }
         public string upgradecode { get; set; }
-        public string productid { get; set; }
         public string outputfile { get; set; }
         public string banner { get; set; }
         public string panel { get; set; }
@@ -35,7 +34,6 @@ namespace SimpleWix.App.Input
             sb.AppendLine(SimpleWix.Ind + "version: " + version ?? "none");
             sb.AppendLine(SimpleWix.Ind + "manufacturer: " + manufacturer ?? "none");
             sb.AppendLine(SimpleWix.Ind + "upgradecode: " + upgradecode ?? "none");
-            sb.AppendLine(SimpleWix.Ind + "productid: " + productid ?? "none");
             sb.AppendLine(SimpleWix.Ind + "outputfile: " + outputfile ?? "none");
             sb.AppendLine(SimpleWix.Ind + "banner: " + banner ?? "none");
             sb.AppendLine(SimpleWix.Ind + "panel: " + panel ?? "none");

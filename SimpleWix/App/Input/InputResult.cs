@@ -42,7 +42,6 @@ namespace SimpleWix.App.Input
         {
             if (man.appname.IsNullOrEmpty()) throw new Exception("Appname must be set either through the manifest of command options");
             if (man.version.IsNullOrEmpty()) throw new Exception("Version must be set either through the manifest of command options");
-            if (man.productid.IsNullOrEmpty()) throw new Exception("Productid must be set either through the manifest of command options");
             if (man.upgradecode.IsNullOrEmpty()) throw new Exception("Upgradecode must be set either through the manifest of command options");
             if (man.outputfile.IsNullOrEmpty()) man.outputfile = Path.Combine(SimpleWix.CurrentFolder, man.appname + " - " + man.version + ".wxs");
             if (man.features == null || man.features.None()) throw new Exception("Error, no features set in manifest!");

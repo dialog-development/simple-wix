@@ -79,7 +79,7 @@ namespace SimpleWix.App
 
                 var fs = InputConverter.ConvertManifestToFileSystem(inputs.features);
                 //Console.WriteLine(fs.Print());
-                var wix = WixConverter.ConvertFileSystem(fs, inputs.productid, inputs.upgradecode, inputs.appname, inputs.version, inputs.icon,
+                var wix = WixConverter.ConvertFileSystem(fs, inputs.upgradecode, inputs.appname, inputs.version, inputs.icon,
                     inputs.manufacturer, inputs.panel, inputs.banner, inputs.license);
 
                 List<string> outPut = wix.Print(0);
@@ -191,7 +191,6 @@ namespace SimpleWix.App
                 Console.WriteLine();
             }
 
-            manifest.productid = Guid.NewGuid().ToString();
             manifest.upgradecode = Guid.NewGuid().ToString();
             manifest.complete = true;
             manifest.quietmode = false;
