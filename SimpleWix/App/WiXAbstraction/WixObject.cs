@@ -316,7 +316,7 @@ namespace SimpleWix.App.WiXAbstraction
 
         public WixProduct(string id, string name, string ver, string upgradeCode) : base("Product")
         {
-            this.SetId(id);//("*");//id);
+            this.SetId("*");//id);
             this.Name = name;
             this.Language = "1033";
             this.Version = ver;
